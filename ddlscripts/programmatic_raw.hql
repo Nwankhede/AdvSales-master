@@ -116,6 +116,7 @@ FIELDS TERMINATED BY ','
 STORED AS PARQUET
 LOCATION 'hdfs://m01.itversity.com:9000/user/itv000094/AdvSalesProject/data';
 
+
 CREATE TABLE IF NOT EXISTS programmatic_fact(
 ssp_id bigint
 ,deal_id bigint
