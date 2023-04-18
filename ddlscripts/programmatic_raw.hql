@@ -21,7 +21,6 @@ FIELDS TERMINATED BY ','
 STORED AS PARQUET
 LOCATION 'hdfs://m01.itversity.com:9000/user/itv000094/AdvSalesProject/data';
 
-
 CREATE EXTERNAL TABLE IF NOT EXISTS programmatic_stg (
 ssp	 String,
 deal String,
@@ -117,9 +116,21 @@ FIELDS TERMINATED BY ','
 STORED AS PARQUET
 LOCATION 'hdfs://m01.itversity.com:9000/user/itv000094/AdvSalesProject/data';
 
-CREATE EXTERNAL TABLE IF NOT EXISTS programmatic_fact (
+CREATE TABLE IF NOT EXISTS programmatic_fact(
+ssp_id bigint
+,deal_id bigint
+,advertiser_id bigint
+,country_id bigint
+,device_category_id bigint
+,agency_id bigint
+,property_id bigint
+,marketplace_id bigint
+,impressions bigint
+,clicks bigint
+,revenue double
+,load_time timestamp)
+PARTITIONED BY (
+filedate int
 )
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-STORED AS PARQUET
+stored AS PARQUET
 LOCATION 'hdfs://m01.itversity.com:9000/user/itv000094/AdvSalesProject/data';
