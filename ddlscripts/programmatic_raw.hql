@@ -21,6 +21,7 @@ FIELDS TERMINATED BY ','
 STORED AS PARQUET
 LOCATION 'hdfs://m01.itversity.com:9000/user/itv000094/AdvSalesProject/data';
 
+
 CREATE EXTERNAL TABLE IF NOT EXISTS programmatic_stg (
 ssp	 String,
 deal String,
