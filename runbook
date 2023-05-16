@@ -1,0 +1,4 @@
+Step 1 - open hive shell and load data from hdfs location to programmatic_raw table
+command -  LOAD DATA INPATH 'hdfs://m01.itversity.com:9000/user/itv000094/SourceFiles_05-04-2021/*' INTO TABLE programmatic_raw;
+
+Step 2 - Load data from programmatic_raw table (source data) into programmatic_stg table

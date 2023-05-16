@@ -11,9 +11,7 @@ prop = {
 "raw_table": "programmatic_raw",
 "stg_table": "programmatic_stg",
 "property_table": "property_dim",
-"warehouse_location": "hdfs://m01.itversity.com:9000/user/itv000094/AdvSalesProject/data",
 "file_path": "D:\\AdvSales-master\\Test\\data\\Sample_data_AdSales.csv",
-"node_file_path": "hdfs://m01.itversity.com:9000/user/itv000094/programmatic_raw",
 "stg_schema": ["date", "ssp", "deal", "advertiser", "country", "device_category", "agency", "property", "marketplace", "integration_type_id", "monetization_channel_id", "ad_unit_id", "total_impressions", "total_revenue", "viewable_impressions", "measurable_impressions", "revenue_share_percent"]
     #/user/itv000094/AdvSalesProject/data - to confirm
 }

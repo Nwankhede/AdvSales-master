@@ -1,0 +1,7 @@
+date,ssp,deal,advertiser,country,device_category,agency,property,marketplace,integration_type_id,monetization_channel_id,ad_unit_id,total_impressions,total_revenue,viewable_impressions,measurable_impressions,revenue_share_percent,_c17,_c18,_c19,_c20,_c21,_c22,_c23,_c24,_c25
+6/30/2019 0:00,IndexExchange,deal103IndexExcha...,  CocaCola,     U.S,         Mobile,  WebFX,hoarding1,Scatter,1,4,5174,16,0,2,16,1,null,null,null,null,null,null,null,null,null
+6/30/2019 0:00,IndexExchange,deal103IndexExcha...,    Target,   Egypt,         Iphone,   Huge,hoarding2,Upfront,1,4,5174,6,0,0,6,1,null,null,null,null,null,null,null,null,null
+6/30/2019 0:00,IndexExchange,deal103IndexExcha...,   Colgate,  France,         Tablet,  Ogilvy & Mather,hoarding3,         Atlantis,1,4,5174,4,0,0,4,1,null,null,null,null,null,null,null,null,null
+6/30/2019 0:00,IndexExchange,deal103IndexExcha...,     Pepsi,Portugal,        Desktop,"Single Grain, LLC",hoarding4,  Vagro,1,4,5174,4,0,0,4,1,null,null,null,null,null,null,null,null,null
+6/30/2019 0:00,IndexExchange,deal103IndexExcha...,    Revlon, England,     Mac seirra,  Blitz,hoarding5, Debrin,1,19,5138,4,0,0,4,1,null,null,null,null,null,null,null,null,null
+6/30/2019 0:00,IndexExchange,deal103IndexExcha...,     Maggi, Germany,         Laptop,   Leap,hoarding6,Globalmarketplace,1,19,5144,2,0,0,2,1,null,null,null,null,null,null,null,null,null
