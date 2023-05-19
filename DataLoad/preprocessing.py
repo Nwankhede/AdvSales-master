@@ -22,6 +22,7 @@ class data_preprocessing(object):
 
             df = spark.read.option("delimiter", ",") \
                 .option("header", "true") \
+                .option("inferSchema", "true")\
                 .csv(tcfg.prop["file_path"])
             return df
 
@@ -46,8 +47,8 @@ class data_preprocessing(object):
         .withColumnRenamed("deal","adv_deal")\
         .withColumnRenamed("agency","adv_agency")\
         .withColumnRenamed("property","adv_property")\
-        .withColumn("filedate", regexp_replace(split(col("date"),' ').getItem(0),'/','').cast("int"))\
-        .withColumn("load_time", unix_timestamp(current_timestamp(), "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"))\
+        .withColumn("filedate", regexp_replace(split(col("date"),' ').getItem(0).cast("string"),'/','').cast("int"))\
+        .withColumn("load_time", to_timestamp(current_timestamp(), "MM-dd-yyyy HH mm ss SSS"))\
         .withColumn("revenue_share_percent",col("revenue_share_percent").cast("Double"))\
         .withColumn("total_revenue",col("total_revenue").cast("Double"))\
         .withColumn("total_impressions",col("total_impressions").cast("bigint"))\
@@ -56,14 +57,14 @@ class data_preprocessing(object):
         .withColumn("integration_type_id",col("integration_type_id").cast("long"))\
         .withColumn("viewable_impressions",col("viewable_impressions").cast("bigint"))\
         .withColumn("measurable_impressions",col("measurable_impressions").cast("bigint"))
-        dfSchema = df_schema.drop("date")
+        dfSchema = df_schema.select("adv_ssp", "adv_deal", "advertiser", "country", "device_category", "adv_agency", "adv_property", "marketplace","integration_type_id", "monetization_channel_id", "ad_unit_id", "total_impressions", "total_revenue", "viewable_impressions", "measurable_impressions", "revenue_share_percent", "load_time", "filedate" )
         return dfSchema
 
-    # def load_table(self):
-    #     #self.schema_clean().show(5)
-    #     print("Db name : " +cfg.prop["database"]+"."+cfg.prop["stg_table"])
-    #     self.schema_clean().printSchema()
-    #     self.schema_clean().write.mode("overwrite").insertInto(f"{cfg.prop['database']}.{cfg.prop['stg_table']}")
+    def load_table(self):
+         #self.schema_clean().show(5)
+         print("Db name : " +cfg.prop["database"]+"."+cfg.prop["stg_table"])
+         self.schema_clean().printSchema()
+         self.schema_clean().write.mode("overwrite").insertInto(f"{cfg.prop['database']}.{cfg.prop['stg_table']}")
 
 
 # df_raw = spark.read.table(cfg.prop['raw_table'])
