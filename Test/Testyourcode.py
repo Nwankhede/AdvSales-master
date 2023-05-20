@@ -13,16 +13,8 @@ spark = sc.builder \
     .config("hive.exec.dynamic.partition.mode", "nonstrict") \
     .getOrCreate()
 
-
+#creating databse and staging tables
 def hive_table_setup():
-    df = spark.sql("show databases;").show()
-    df = spark.sql("create database if not exists programmatic_rv;")
-    df = spark.sql("use programmatic_rv;")
-    df = spark.sql(dd.SQL)
-    df = spark.sql("show tables;").show()
-
-
-if __name__ == '__main__':
     # Created for testing less no of columns
     spark.sql("create database if not exists programmatic_rv;")
     spark.sql("use programmatic_rv;")
@@ -30,7 +22,10 @@ if __name__ == '__main__':
     spark.sql("show tables;").show()
     spark.sql("describe table programmatic_stg;").show(20, False)
 
-    # Load logic test
+
+if __name__ == '__main__':
+    hive_table_setup()
+      # Load logic test
     obj = pre.data_preprocessing()
     obj.process()
     df_select = obj.schema_clean().select("*")

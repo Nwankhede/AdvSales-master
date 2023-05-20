@@ -5,3 +5,5 @@ date,ssp,deal,advertiser,country,device_category,agency,property,marketplace,int
 06/30/2019 10:30:05,IndexExchange,deal103IndexExcha...,Pepsi,Portugal,Desktop,"Single Grain, LLC",hoarding4,Vagro,1,4,5174,4,0,0,4,1,null,null,null,null,null,null,null,null,null
 06/30/2019 10:30:05,IndexExchange,deal103IndexExcha...,Revlon,England,Mac seirra,Blitz,hoarding5,Debrin,1,19,5138,4,0,0,4,1,null,null,null,null,null,null,null,null,null
 06/30/2019 10:30:05,IndexExchange,deal103IndexExcha...,Maggi,Germany,Laptop,Leap,hoarding6,Globalmarketplace,1,19,5144,2,0,0,2,1,null,null,null,null,null,null,null,null,null
+06/30/2019 10:30:05,SpotX,deal103SpotX,Maggi,Germany,Laptop,Leap,hoarding6,Globalmarketplace,1,19,5144,2,0,0,2,1,null,null,null,null,null,null,null,null,null
+06/30/2019 10:30:05,Pubmatic,deal103Pubmatic,Maggi,Germany,Laptop,Leap,hoarding6,Globalmarketplace,1,19,5144,2,0,0,2,1,null,null,null,null,null,null,null,null,null

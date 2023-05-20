@@ -20,11 +20,11 @@ PARTITIONED BY (
 filedate int
 )
 stored AS PARQUET; """
-testSQL = """CREATE TABLE IF NOT EXISTS programmatic_stg_tst(
- adv_ssp  string
-,adv_deal   string
-,load_time timestamp)
+ssp_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
+ ssp_id bigint,
+ adv_ssp  string)
 PARTITIONED BY ( 
-filedate int
+load_time timestamp
 )
 stored AS PARQUET; """
+# create other dim tables take reference of ssp_dim creation
