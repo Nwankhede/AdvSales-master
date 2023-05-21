@@ -22,9 +22,58 @@ filedate int
 stored AS PARQUET; """
 ssp_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
  ssp_id bigint,
- adv_ssp  string)
+ ssp_name  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
 # create other dim tables take reference of ssp_dim creation
+deal_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
+ deal_id bigint,
+ deal_name  string)
+PARTITIONED BY ( 
+load_time timestamp
+)
+stored AS PARQUET; """
+advertiser_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
+ advertiser_id bigint,
+ advertiser_name  string)
+PARTITIONED BY ( 
+load_time timestamp
+)
+stored AS PARQUET; """
+country_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
+ country_id bigint,
+ country_name  string)
+PARTITIONED BY ( 
+load_time timestamp
+)
+stored AS PARQUET; """
+device_category_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
+ device_category_id bigint,
+ device_category_name  string)
+PARTITIONED BY ( 
+load_time timestamp
+)
+stored AS PARQUET; """
+agency_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
+ agency_id bigint,
+ agency_name  string)
+PARTITIONED BY ( 
+load_time timestamp
+)
+stored AS PARQUET; """
+property_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
+ property_id bigint,
+ property_name  string)
+PARTITIONED BY ( 
+load_time timestamp
+)
+stored AS PARQUET; """
+marketplace_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
+ marketplace_id bigint,
+ marketplace_name  string)
+PARTITIONED BY ( 
+load_time timestamp
+)
+stored AS PARQUET; """
