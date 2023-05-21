@@ -14,7 +14,7 @@ def dim_tables_load(tableName):
         .withColumn("load_date", to_timestamp(current_timestamp(), "MM-dd-yyyy HH mm ss"))
     return tableNameDF
 
-#read the data from dim tables
+# read the data from dim tables
 
 ssp_dim = dim_tables_load("ssp")
 deal_dim = dim_tables_load("deal")
