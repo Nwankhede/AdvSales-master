@@ -22,57 +22,57 @@ filedate int
 stored AS PARQUET; """
 ssp_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
  ssp_id bigint,
- adv_ssp  string)
+ ssp_name  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
 # create other dim tables take reference of ssp_dim creation
-adv_deal = """CREATE TABLE IF NOT EXISTS deal_dim(
+deal_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
  deal_id bigint,
- adv_deal  string)
+ deal_name  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
-advertiser = """CREATE TABLE IF NOT EXISTS advertiser_dim(
+advertiser_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
  advertiser_id bigint,
- advertiser  string)
+ advertiser_name  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
-country = """CREATE TABLE IF NOT EXISTS country_dim(
+country_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
  country_id bigint,
- country  string)
+ country_name  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
-adv_property = """CREATE TABLE IF NOT EXISTS property_identifier_dim(
- property_id bigint,
- property  string)
+device_category_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
+ device_category_id bigint,
+ device_category_name  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
-device_category = """CREATE TABLE IF NOT EXISTS device_category_dim(
- device_id bigint,
- device  string)
-PARTITIONED BY ( 
-load_time timestamp
-)
-stored AS PARQUET; """
-adv_agency = """CREATE TABLE IF NOT EXISTS agency_dim(
+agency_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
  agency_id bigint,
- agency  string)
+ agency_name  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
-marketplace = """CREATE TABLE IF NOT EXISTS marketplace_dim(
+property_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
+ property_id bigint,
+ property_name  string)
+PARTITIONED BY ( 
+load_time timestamp
+)
+stored AS PARQUET; """
+marketplace_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
  marketplace_id bigint,
- marketplace  string)
+ marketplace_name  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
