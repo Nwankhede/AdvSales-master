@@ -22,58 +22,68 @@ filedate int
 stored AS PARQUET; """
 ssp_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
  ssp_id bigint,
- adv_ssp  string)
+ ssp_desc  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
 # create other dim tables take reference of ssp_dim creation
-adv_deal = """CREATE TABLE IF NOT EXISTS deal_dim(
+deal_dim = """CREATE TABLE IF NOT EXISTS deal_dim(
  deal_id bigint,
- adv_deal  string)
+ deal_desc  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
-advertiser = """CREATE TABLE IF NOT EXISTS advertiser_dim(
+advertiser_dim = """CREATE TABLE IF NOT EXISTS advertiser_dim(
  advertiser_id bigint,
- advertiser  string)
+ advertiser_desc  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
-country = """CREATE TABLE IF NOT EXISTS country_dim(
+country_dim = """CREATE TABLE IF NOT EXISTS country_dim(
  country_id bigint,
- country  string)
+ country_desc  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
-adv_property = """CREATE TABLE IF NOT EXISTS property_identifier_dim(
+property_dim = """CREATE TABLE IF NOT EXISTS property_dim(
  property_id bigint,
- property  string)
+ property_desc  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
-device_category = """CREATE TABLE IF NOT EXISTS device_category_dim(
+device_category_dim = """CREATE TABLE IF NOT EXISTS device_category_dim(
  device_id bigint,
- device  string)
+ device_category_desc  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
-adv_agency = """CREATE TABLE IF NOT EXISTS agency_dim(
+agency_dim = """CREATE TABLE IF NOT EXISTS agency_dim(
  agency_id bigint,
- agency  string)
+ agency_desc  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
-marketplace = """CREATE TABLE IF NOT EXISTS marketplace_dim(
+marketplace_dim = """CREATE TABLE IF NOT EXISTS marketplace_dim(
  marketplace_id bigint,
- marketplace  string)
+ marketplace_desc  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
+droptables = """
+            DROP TABLE SSP_DIM;
+            DROP TABLE DEAL_DIM;
+            DROP TABLE ADVERTISER_DIM;
+            DROP TABLE COUNTRY_DIM;
+            DROP TABLE AGENCY_DIM;
+            DROP TABLE PROPERTY_DIM;
+            DROP TABLE MARKETPLACE_DIM;
+            DROP TABLE DEVICE-CATEGORY_DIM;
+            """

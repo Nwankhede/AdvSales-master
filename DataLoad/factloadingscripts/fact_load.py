@@ -1,4 +1,4 @@
 # loading the data into different fact tables
 from Config import config
 
-print(config.prop["fact_table"])
+df_stg = spark.sql("select * from ")
