@@ -22,6 +22,7 @@ def hive_table_setup():
     spark.sql("show tables;").show()
     spark.sql("describe table programmatic_stg;").show(20, False)
 
+
 if __name__ == '__main__':
     hive_table_setup()
       # Load logic test
