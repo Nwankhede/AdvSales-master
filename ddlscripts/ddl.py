@@ -22,57 +22,57 @@ filedate int
 stored AS PARQUET; """
 ssp_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
  ssp_id bigint,
- ssp_name  string)
+ adv_ssp  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
 # create other dim tables take reference of ssp_dim creation
-deal_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
+adv_deal = """CREATE TABLE IF NOT EXISTS deal_dim(
  deal_id bigint,
- deal_name  string)
+ adv_deal  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
-advertiser_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
+advertiser = """CREATE TABLE IF NOT EXISTS advertiser_dim(
  advertiser_id bigint,
- advertiser_name  string)
+ advertiser  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
-country_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
+country = """CREATE TABLE IF NOT EXISTS country_dim(
  country_id bigint,
- country_name  string)
+ country  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
-device_category_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
- device_category_id bigint,
- device_category_name  string)
-PARTITIONED BY ( 
-load_time timestamp
-)
-stored AS PARQUET; """
-agency_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
- agency_id bigint,
- agency_name  string)
-PARTITIONED BY ( 
-load_time timestamp
-)
-stored AS PARQUET; """
-property_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
+adv_property = """CREATE TABLE IF NOT EXISTS property_identifier_dim(
  property_id bigint,
- property_name  string)
+ property  string)
 PARTITIONED BY ( 
 load_time timestamp
 )
 stored AS PARQUET; """
-marketplace_dim = """CREATE TABLE IF NOT EXISTS ssp_dim(
+device_category = """CREATE TABLE IF NOT EXISTS device_category_dim(
+ device_id bigint,
+ device  string)
+PARTITIONED BY ( 
+load_time timestamp
+)
+stored AS PARQUET; """
+adv_agency = """CREATE TABLE IF NOT EXISTS agency_dim(
+ agency_id bigint,
+ agency  string)
+PARTITIONED BY ( 
+load_time timestamp
+)
+stored AS PARQUET; """
+marketplace = """CREATE TABLE IF NOT EXISTS marketplace_dim(
  marketplace_id bigint,
- marketplace_name  string)
+ marketplace  string)
 PARTITIONED BY ( 
 load_time timestamp
 )

@@ -1,10 +1,45 @@
 from pyspark.sql.functions import *
+
+from pyspark.sql import SparkSession
 from Config import config as cfg
+from Test.Config import test_config as tcfg
 import os
+
 
 class data_preprocessing(object):
     def __init__(self):
         self.mode = "local"
+
+    def process(self):
+        if self.mode == "local":
+            spark = SparkSession.builder \
+                .master('local[1]') \
+                .enableHiveSupport() \
+                .appName('AdvSales') \
+                .config("hive.exec.dynamic.partition", "true") \
+                .config("hive.exec.dynamic.partition.mode", "nonstrict") \
+                .getOrCreate()
+
+            df = spark.read.option("delimiter", ",") \
+                .option("header", "true") \
+                .option("inferSchema", "true")\
+                .csv(tcfg.prop["file_path"])
+            return df
+
+
+        elif self.mode == "cluster":
+            spark = SparkSession.builder \
+                .master('yarn') \
+                .appName('AdvSales') \
+                .config("spark.sql.warehouse.dir", cfg.prop['warehouse_location']) \
+                .config("hive.exec.dynamic.partition", "true") \
+                .config("hive.exec.dynamic.partition.mode", "nonstrict") \
+                .enableHiveSupport() \
+                .getOrCreate()
+            df = spark.read.option("delimiter", ",") \
+                .option("header", "true") \
+                .csv(cfg.prop["node_file_path"])
+            return df
 
     def schema_clean(self):
         df_schema = self.process().select(cfg.prop["stg_schema"])\
@@ -25,9 +60,16 @@ class data_preprocessing(object):
         dfSchema = df_schema.select("adv_ssp", "adv_deal", "advertiser", "country", "device_category", "adv_agency", "adv_property", "marketplace","integration_type_id", "monetization_channel_id", "ad_unit_id", "total_impressions", "total_revenue", "viewable_impressions", "measurable_impressions", "revenue_share_percent", "load_time", "filedate" )
         return dfSchema
 
-    def stage_load_table(self):
-         df_select = self.schema_clean().select("*")
-         df_select.printSchema()
-         df_select.show(10, False)
-         df_select.write.mode("overwrite").insertInto("programmatic_rv.programmatic_stg")
-         print(f"programmatic_rv.programmatic_stg loaded successfully, records inserted: {df_select.count()}")
+    def load_table(self):
+         #self.schema_clean().show(5)
+         print("Db name : " +cfg.prop["database"]+"."+cfg.prop["stg_table"])
+         self.schema_clean().printSchema()
+         self.schema_clean().write.mode("overwrite").insertInto(f"{cfg.prop['database']}.{cfg.prop['stg_table']}")
+
+
+# df_raw = spark.read.table(cfg.prop['raw_table'])
+#
+# #Removing unnecessary columns from the raw data
+#
+
+
